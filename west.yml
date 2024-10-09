@@ -39,6 +39,10 @@ manifest:
       url-base: https://github.com/boschsensortec
     - name: eembc
       url-base: https://github.com/eembc
+    - name: mrt
+      url-base: https://projecttools.nordicsemi.no/bitbucket/scm/MRT
+    - name: lmaciejonczyk
+      url-base: https://github.com/lmaciejonczyk
 
   # If not otherwise specified, the projects below should be obtained
   # from the ncs remote.
@@ -69,7 +73,8 @@ manifest:
     # https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/zephyr/guides/modules.html
     - name: zephyr
       repo-path: sdk-zephyr
-      revision: 9471a136b58bfa6853b4854308ca4429ba670934
+      remote: lmaciejonczyk
+      revision: hot_potato
       import:
         # In addition to the zephyr repository itself, NCS also
         # imports the contents of zephyr/west.yml at the above
@@ -290,6 +295,11 @@ manifest:
       revision: d5fad6bd094899101a4e5fd53af7298160ced6ab
       groups:
         - benchmark
+    - name: hot_potato
+      remote: mrt
+      repo-path: hot_potato.git
+      path: nrf/subsys/mpsl/fem/hot_potato
+      revision: develop
 
   # West-related configuration for the nrf repository.
   self:
