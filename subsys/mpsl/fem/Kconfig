@@ -126,6 +126,7 @@ config MPSL_FEM_PSEMI
 	select NRFX_PPI if HAS_HW_NRF_PPI
 	select NRFX_DPPI if HAS_HW_NRF_DPPIC
 	select MPSL_FEM_NCS_SUPPORTED_FEM_USED
+	select POWER_MAP_MODEL
 	bool "PSEMI front-end module"
 	help
 	  FEM device is PSEMI.
