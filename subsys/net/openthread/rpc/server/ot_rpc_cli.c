@@ -33,7 +33,7 @@ static int ot_cli_output_callback(void *aContext, const char *aFormat, va_list a
 	num_written = MIN((size_t)result, sizeof(output_line_buffer));
 	cbor_buffer_size += num_written;
 	NRF_RPC_CBOR_ALLOC(&ot_group, ctx, cbor_buffer_size);
-	nrf_rpc_encode_str(&ctx, output_line_buffer, num_written);
+	zcbor_tstr_encode_ptr(ctx.zs, output_line_buffer, num_written);
 
 	nrf_rpc_cbor_cmd_no_err(&ot_group, OT_RPC_CMD_CLI_OUTPUT, &ctx, ot_rpc_decode_void, NULL);
 
@@ -68,9 +68,14 @@ NRF_RPC_CBOR_CMD_DECODER(ot_group, ot_rpc_cmd_cli_init, OT_RPC_CMD_CLI_INIT, ot_
 static void ot_rpc_cmd_cli_input_line(const struct nrf_rpc_group *group,
 				      struct nrf_rpc_cbor_ctx *ctx, void *handler_data)
 {
-	char input_line_buffer[256];
 	struct nrf_rpc_cbor_ctx rsp_ctx;
 	char *result;
+
+#if CONFIG_OPENTHREAD_CLI_MAX_LINE_LENGTH > 256
+	static
+#endif
+		char input_line_buffer[CONFIG_OPENTHREAD_CLI_MAX_LINE_LENGTH - 1];
+
 
 	/* Parse the input */
 	result = nrf_rpc_decode_str(ctx, input_line_buffer, sizeof(input_line_buffer));
