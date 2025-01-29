@@ -183,7 +183,8 @@ manifest:
     - name: nrf-802154
       repo-path: sdk-nrf-802154
       path: nrf-802154
-      revision: 0a23191390b001fe608c804fa53dbcb542d22b62
+      remote: lmaciejonczyk
+      revision: fix_ack_tx_power
       groups:
         - nrf-802154
     - name: soc-hwmv1
@@ -299,7 +300,7 @@ manifest:
       remote: mrt
       repo-path: hot_potato.git
       path: nrf/subsys/mpsl/fem/hot_potato
-      revision: develop
+      revision: luma/disable_spi_dbg_uart
 
   # West-related configuration for the nrf repository.
   self:
