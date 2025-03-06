@@ -294,7 +294,7 @@ manifest:
       remote: mrt
       repo-path: hot_potato.git
       path: nrf/subsys/mpsl/fem/hot_potato
-      revision: v0.2.0
+      revision: develop
 
   # West-related configuration for the nrf repository.
   self:
