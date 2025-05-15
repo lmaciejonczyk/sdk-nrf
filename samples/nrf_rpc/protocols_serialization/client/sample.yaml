@@ -55,7 +55,7 @@ tests:
       - ci_build
       - ci_samples_nrf_rpc
     extra_args: >
-      SNIPPET="ble;openthread;coex;log_rpc;ci-shell;zperf"
+      SNIPPET="ble;openthread;coex;log_rpc;ci-shell;zperf;hot_potato"
     integration_platforms:
       - nrf52840dk/nrf52840
       - nrf54l15dk/nrf54l15/cpuapp
